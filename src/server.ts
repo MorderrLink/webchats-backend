@@ -12,6 +12,7 @@ import { createChat, findChat } from "./functions/find-create-chat";
 import { getChatById } from "./functions/getChat";
 import { createNewMessage, deleteMessage, updateMessage } from "./functions/messages";
 import { PrismaClient } from "@prisma/client";
+import { createServer } from "http";
 
 
 
@@ -167,7 +168,8 @@ app.listen(PORT, () => {
 
 
 
-const server = new WebSocketServer({ port: 8000 });
+const createdServer = createServer(app)
+const server = new WebSocket.Server({ server: createdServer })
 
 const clients: Record<string, WebSocket> = {};
 
