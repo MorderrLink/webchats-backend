@@ -167,7 +167,7 @@ app.listen(PORT, () => {
 
 
 
-const server = new WebSocketServer({ port: 5000 });
+const server = new WebSocketServer({ port: 8000 });
 
 const clients: Record<string, WebSocket> = {};
 
