@@ -24,7 +24,8 @@ const PORT = process.env.PORT || 8000;
 
 
 app.use(express.json());
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'];
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
+console.log(allowedOrigins);
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -160,7 +161,7 @@ app.post('/api/save-subscription', async (req: Request, res: Response) => {
 
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on https://${process.env.BACKEND_ENDPOINT}`);
 });
 
 
